@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+
+<h1>Book Details</h1>
+<p>Title of Book: {{ b.title }}</p>
+<p>Publication Date: {{ b.publicationDate ? b.publicationDate|date('Y-m-d H:i') : '' }}</p>
+<p>Author: {{ b.author.username }}</p>
+
+<a href="{{ path('app_AfficheBook') }}">Back to Book List</a>
+
+</body>
+</html>

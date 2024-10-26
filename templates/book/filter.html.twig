@@ -1,0 +1,22 @@
+{# templates/book/filter.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Filtrer les livres par date de publication</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    {% if books is not empty %}
+        <h2>Résultats de la recherche :</h2>
+        <ul>
+            {% for book in books %}
+                <li>{{ book.title }} - {{ book.publicationDate|date('Y-m-d') }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun livre trouvé pour cette période.</p>
+    {% endif %}
+{% endblock %}

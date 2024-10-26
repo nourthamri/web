@@ -1,0 +1,31 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Enabled</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publicationDate ? book.publicationDate|date('F d, Y') : '' }}</td>
+                <td>{{ book.enabled ? 'Yes' : 'No' }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.author.username }}</td>
+                <td>
+                    <a href="{{ path('app_detailsBook', {'ref': book.ref}) }}">Show</a>
+                    <a href="{{ path('app_editBooks', {'ref': book.ref}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

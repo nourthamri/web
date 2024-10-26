@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<title>document</title>
+</head>
+
+<body>
+<h1>nombre des auteurs est : {{authors | length }}</h1>
+
+{% set nbTotal=0 %}
+{% for a in authors %}
+{% set nbTotal=nbTotal +a.nb_books %}
+{% endfor %}
+<p> nombre total des livres est : {{nbTotal}} </p>
+
+<table border="1">
+<tr>
+<th> id </th>
+<th> picture </th>
+<th> username </th>
+<th> email</th>
+<th> nb_books </th>
+<th>Details</th>  
+ </tr>
+
+ {% for a in authors %}
+ <tr>
+  <td> {{a.id}}</td>
+ <td> <img src="{{a.picture}}"</td>
+ <td> {{a.username | upper}}</td>
+ <td> {{a.email}}</td>
+ <td> {{a.nb_books}}</td>
+ <td>
+    <td>
+    <a href="{{ path('app_author_details', { 'id': a.id }) }}">Détails</a>
+</td>
+
+</td>
+ {% else %} <h1>Tableau Vide</h1>
+ {% endfor %} 
+ </tr>
+
+</table>
+
+</body>
+
+</html>
